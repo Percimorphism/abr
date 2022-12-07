@@ -15,10 +15,10 @@ def load_data():
     data = pd.read_excel(DATA_URL, sheet_name='complete', engine='openpyxl')
     return data
 
-dc = load_data()
+philly = load_data()
 
 nomi = pgeocode.Nominatim('US')
-loc = nomi.query_postal_code((dc['Zip'].astype(str)).to_list())
+loc = nomi.query_postal_code((philly['Zip'].astype(str)).to_list())
 
 heatmap_data = {'zip': loc['postal_code'],
                 'lat': loc['latitude'], 
