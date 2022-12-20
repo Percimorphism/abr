@@ -13,9 +13,11 @@ DATA_URL=("./datasource/pbr-zip-codes.xlsx")
 @st.cache(persist=True)
 def load_data():
     data = pd.read_excel(DATA_URL, sheet_name='complete', engine='openpyxl')
+    data['Zip'] = (data['Zip'].astype(str)).str[:5]
     return data
 
 philly = load_data()
+st.write(philly)
 
 nomi = pgeocode.Nominatim('US')
 loc = nomi.query_postal_code((philly['Zip'].astype(str)).to_list())
