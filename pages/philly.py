@@ -17,7 +17,7 @@ def load_data():
     return data
 
 philly = load_data()
-st.write(philly)
+# st.write(philly)
 
 nomi = pgeocode.Nominatim('US')
 loc = nomi.query_postal_code((philly['Zip'].astype(str)).to_list())
@@ -26,6 +26,7 @@ heatmap_data = {'zip': loc['postal_code'],
                 'lat': loc['latitude'], 
                 'lon' : loc['longitude']} 
 hm = pd.DataFrame(data=heatmap_data) 
+
 hm = hm.dropna(how='any')
 # st.write(hm)
 

@@ -13,6 +13,7 @@ dc_DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
 @st.cache(persist=True)
 def load_data():
     data = pd.read_excel(dc_DATA_URL, sheet_name='complete', engine='openpyxl')
+    data['Zip'] = (data['Zip'].astype(str)).str[:5]
     return data
 dc = load_data()
 #st.write(dc)
@@ -34,6 +35,7 @@ p_DATA_URL=("./datasource/pbr-zip-codes.xlsx")
 @st.cache(persist=True)
 def load_data():
     data = pd.read_excel(p_DATA_URL, sheet_name='complete', engine='openpyxl')
+    data['Zip'] = (data['Zip'].astype(str)).str[:5]
     return data
 
 philly = load_data()
