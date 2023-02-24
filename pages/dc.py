@@ -14,6 +14,8 @@ DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
 def load_data():
     data = pd.read_excel(DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
+    data['Zip'] = data['Zip'].str.zfill(5)
+
     return data
 
 dc = load_data()

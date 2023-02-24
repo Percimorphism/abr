@@ -14,6 +14,7 @@ DATA_URL=("./datasource/Field Marketing Philly Zips.xlsx")
 def load_data():
     data = pd.read_excel(DATA_URL, engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
+    data['Zip'] = data['Zip'].str.zfill(5)
     return data
 
 pfm = load_data()
