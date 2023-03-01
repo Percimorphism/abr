@@ -10,7 +10,7 @@ st.title("DC Ridership Heatmap")
 
 DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
 
-@st.cache(persist=True)
+@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]

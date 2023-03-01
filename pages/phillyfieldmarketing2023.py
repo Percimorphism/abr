@@ -10,7 +10,7 @@ st.title("Philly 2023 Field Marketing Heatmap")
 
 DATA_URL=("./datasource/Field Marketing Philly Zips.xlsx")
 
-@st.cache(persist=True)
+@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(DATA_URL, engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
@@ -18,7 +18,8 @@ def load_data():
     return data
 
 pfm = load_data()
-st.write(pfm)
+st.write(pfm['Zip'].value_counts())
+
 
 nomi = pgeocode.Nominatim('US')
 loc = nomi.query_postal_code((pfm['Zip'].astype(str)).to_list())
