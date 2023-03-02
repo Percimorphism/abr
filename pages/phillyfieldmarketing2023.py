@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import pgeocode
+import pydeck as pdk
 
 
 st.title("Philly 2023 Field Marketing Heatmap")
@@ -30,9 +31,28 @@ heatmap_data = {'zip': loc['postal_code'],
 hm = pd.DataFrame(data=heatmap_data) 
 
 hm = hm.dropna(how='any')
-# st.write(hm)
+#st.write(hm)
 
 st.map(hm[['lat', 'lon']])
 
-
-
+st.pydeck_chart(pdk.Deck(
+    map_style=None,
+    initial_view_state=pdk.ViewState(
+        latitude=39.9207,
+        longitude=-75.1595,
+        zoom=11,
+        pitch=30,
+    ),
+    layers=[
+        pdk.Layer(
+           'HexagonLayer',
+           data=hm,
+           get_position='[lon, lat]',
+           radius=200,
+           elevation_scale=4,
+           elevation_range=[0, 2000],
+           pickable=True,
+           extruded=True,
+        ),
+    ],
+))
