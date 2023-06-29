@@ -116,7 +116,7 @@ st.write("heatmap of riders who siged up for 22 but not yet as of 6-30-23")
 a = pd.DataFrame(hm_22.value_counts())
 b = pd.DataFrame(hm_23.value_counts())
 diff_hm = pd.DataFrame(((b-a).dropna()))
-diff_hm = diff_hm.loc[diff_hm[0] < 0]
+diff_hm = diff_hm.loc[diff_hm.iloc[:, 0] < 0]
 diff_hm[0] = abs(diff_hm[0])
 diff_hm = diff_hm.reset_index()
 diff_hm = diff_hm.reindex(diff_hm.index.repeat(diff_hm[0]))
