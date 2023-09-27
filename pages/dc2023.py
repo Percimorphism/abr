@@ -23,6 +23,7 @@ dc = load_data()
 
 st.write(dc['Zip'].value_counts())
 
+
 nomi = pgeocode.Nominatim('US')
 loc = nomi.query_postal_code((dc['Zip'].astype(str)).to_list())
 # st.write(loc)
