@@ -7,7 +7,7 @@ import pgeocode
 import pydeck as pdk
 
 
-st.title("DC and Philly Ridership Heatmap Combined")
+st.title("DC and Philly 2022 Ridership Heatmap Combined")
 
 ## DC
 dc_DATA_URL=("./datasource/dcbr-zip-codes.xlsx")

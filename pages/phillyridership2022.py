@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pgeocode
 
 
-st.title("Philly Ridership Heatmap")
+st.title("Philly 2022 Ridership Heatmap")
 
 DATA_URL=("./datasource/pbr-zip-codes.xlsx")
 
