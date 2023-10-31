@@ -10,7 +10,7 @@ st.title("DC 2022 Ridership Heatmap")
 
 DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
 
-@st.cache_data(persist=True)
+# @st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
@@ -30,6 +30,6 @@ heatmap_data = {'zip': loc['postal_code'],
                 'lon' : loc['longitude']} 
 hm = pd.DataFrame(data=heatmap_data) 
 hm = hm.dropna(how='any')
-# st.write(hm)
+st.write(hm.shape)
 
 st.map(hm[['lat', 'lon']])

@@ -10,8 +10,8 @@ import pydeck as pdk
 st.title("DC and Philly 2023 Ridership Heatmap Combined")
 
 ## DC
-dc_DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
-@st.cache_data(persist=True)
+dc_DATA_URL=("./datasource/dcbr23-zipcodes.xlsx")
+#@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(dc_DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
@@ -34,7 +34,7 @@ st.write(dc_hm.shape)
 ## Philly
 p_DATA_URL=("./datasource/philly-2023.xlsx")
 
-@st.cache_data(persist=True)
+#@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(p_DATA_URL, sheet_name='philly2023', engine='openpyxl')
     data['Zip'] = (data['Zip Code'].astype(str)).str[:5]

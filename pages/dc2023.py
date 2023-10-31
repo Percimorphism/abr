@@ -33,7 +33,7 @@ heatmap_data = {'zip': loc['postal_code'],
                 'lon' : loc['longitude']} 
 hm = pd.DataFrame(data=heatmap_data) 
 hm = hm.dropna(how='any')
-# st.write(hm)
+st.write(hm.shape)
 
 st.map(hm[['lat', 'lon']])
 
