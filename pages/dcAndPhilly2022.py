@@ -11,7 +11,7 @@ st.title("DC and Philly 2022 Ridership Heatmap Combined")
 
 ## DC
 dc_DATA_URL=("./datasource/dcbr-zip-codes.xlsx")
-@st.cache_data(persist=True)
+#@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(dc_DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
@@ -32,9 +32,9 @@ st.write(dc_hm.shape)
 #st.write(dc_hm)
 
 ## Philly
-p_DATA_URL=("./datasource/pbr-zip-codes.xlsx")
+p_DATA_URL=("./datasource/pbr22-zip-codes.xlsx")
 
-@st.cache_data(persist=True)
+#@st.cache_data(persist=True)
 def load_data():
     data = pd.read_excel(p_DATA_URL, sheet_name='complete', engine='openpyxl')
     data['Zip'] = (data['Zip'].astype(str)).str[:5]
